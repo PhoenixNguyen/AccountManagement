@@ -30,7 +30,15 @@ public class Account {
 	private String note;
 	@Column(name = "account_status")
 	private int status;
-
+	@Column(name = "account_permission")
+	private int permission;
+	
+	public int getPermission() {
+		return permission;
+	}
+	public void setPermission(int permission) {
+		this.permission = permission;
+	}
 	public int getStatus() {
 		return status;
 	}

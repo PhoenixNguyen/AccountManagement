@@ -55,9 +55,10 @@
 						<table id="accountlist"  style="">
 						<col width="5%"/>
 						<col width="10%"/>
-						<col width="20%"/>
+						<col width="15%"/>
 						<col width="25%"/>
 						<col width="20%"/>
+						<col width="5%"/>
 						<col width="10%"/>
 						<col width="10%"/>
 							<thead>
@@ -67,6 +68,7 @@
 									<th class="thlist">Tên tài khoản</th>
 									<th class="thlist">Địa chỉ</th>
 									<th class="thlist">Ghi chú</th>
+									<th class="thlist">Quyền</th>
 									<th class="thlist">Trạng thái</th>
 									<th class="thlist">Hành động</th>
 								</tr>
@@ -82,6 +84,20 @@
 									<td class="tdlist" style="text-align: left;"><c:out value="${account.name }"/></td>
 									<td class="tdlist" style="text-align: left;"><c:out value="${account.address }"/></td>
 									<td class="tdlist" style="text-align: left;"><c:out value="${account.note }"/></td>
+									
+									<td class="tdlist" >
+									<c:choose>
+										<c:when test="${account.permission == 1}">
+											Admin
+										</c:when>
+										<c:when test="${account.permission == 2}">
+											User
+										</c:when>
+										
+									</c:choose>
+									
+									</td>
+									
 									<td class="tdlist" >
 									<c:choose>
 										<c:when test="${account.status == 1}">
