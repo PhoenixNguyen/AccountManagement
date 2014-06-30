@@ -16,7 +16,8 @@ public class AccountValidator implements Validator{
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		ValidationUtils.rejectIfEmpty(errors, "pw", "required.pw", "Field is required!");
+		ValidationUtils.rejectIfEmpty(errors, "pw", "required.pw", "Bạn chưa nhập mật khẩu!");
+		ValidationUtils.rejectIfEmpty(errors, "id", "required.id", "Bạn chưa nhập tài khoản!");
 		
 		Account account = (Account)target;
 		

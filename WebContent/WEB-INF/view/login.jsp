@@ -49,7 +49,7 @@ response.setCharacterEncoding("UTF-8");
 							action="${accountRegistration}"> --%>
 							<form:form method="POST" commandName="loginForm">
 
-								<form:errors path="*" cssClass="errorblock" element="div"/>
+								<%-- <form:errors path="*" cssClass="errorblock" element="div"/> --%>
 								
 							<table >
 								<%-- <tr>
@@ -60,10 +60,12 @@ response.setCharacterEncoding("UTF-8");
 								<tr>
 									<td style="text-align: right;"><form:label path="id">Mã tài khoản: </form:label></td>
 									<td style="text-align: left;"><form:input path="id" style="width: 40%; padding: 5px;" placeholder="Nhập mã tài khoản"/></td>
+									<td><form:errors path="id" style="color: red;" cssClass="error" /></td>
 								</tr>
 								<tr>
 									<td style="text-align: right;"><form:label path="pw">Mật khẩu: </form:label></td>
 									<td style="text-align: left;"><form:password path="pw" style="width: 40%; padding: 5px;" placeholder="Mật khẩu"/></td>
+									<td><form:errors path="pw" style="color: red;" cssClass="error" /></td>
 								</tr>
 								<tr>
 									<td style="text-align: right;"><form:label path="">Giữ tôi đăng nhập: </form:label></td>

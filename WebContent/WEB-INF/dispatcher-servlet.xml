@@ -85,10 +85,10 @@
 		<property name="formView" value="login" />
 		<!-- <property name="successView" value="account-list" /> -->
 		
-		<!-- Map a validator
+		<!-- Map a validator  -->
 		<property name="validator">
 			<bean class="com.hp.validator.AccountValidator" />
-		</property> -->
+		</property>
 	</bean>
 	
 	<bean class="com.hp.controller.DisplayController" />
