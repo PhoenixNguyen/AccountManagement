@@ -16,23 +16,8 @@
         "
         >
 
-	<!-- <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
+	<!-- <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" /> -->
 	
-	<bean class="com.hp.controller.AccountController" >
-		<property name="formView" value="edit-account" />
-		<property name="successView" value="account-list" />
-		
-		Map a validator
-		<property name="validator">
-			<bean class="com.hp.validator.AccountValidator" />
-		</property>
-	</bean> -->
-
- 	<!-- Register the Customer.properties -->
-	<!-- <bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basename" value="com/hp/properties/Account" />
-	</bean> -->
 	
 	<!-- <mvc:resources mapping="/resources/**" location="/resources/" />
 	<mvc:annotation-driven /> -->
@@ -93,4 +78,15 @@
 	<!-- Declare the Resolver -->
 	<bean id="localeResolver"  
 	       class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+	       
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
+    <bean class="com.hp.controller.LoginController" >
+		<property name="formView" value="login" />
+		<!-- <property name="successView" value="account-list" /> -->
+		
+		<!-- Map a validator
+		<property name="validator">
+			<bean class="com.hp.validator.AccountValidator" />
+		</property> -->
+	</bean>
 </beans>

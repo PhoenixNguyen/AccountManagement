@@ -37,7 +37,7 @@ response.setCharacterEncoding("UTF-8");
 				<!-- Body -->
 				<div id="w_body">
 					<div id="title">
-						<h1>Tạo mới tài khoản</h1>
+						<h1>Đăng nhập</h1>
 						
 						<c:if test="${!empty model.account}">
 							<span style="color: red;">Tài khoản đã tồn tại</span>
@@ -45,8 +45,12 @@ response.setCharacterEncoding("UTF-8");
 					</div>
 					<div id="account">
 						<c:url var="accountRegistration" value="new-account.html" />
-						<form:form id="registerForm" modelAttribute="account" method="post"
-							action="${accountRegistration}">
+						<%-- <form:form id="registerForm" modelAttribute="account" method="post"
+							action="${accountRegistration}"> --%>
+							<form:form method="POST" commandName="loginForm">
+
+								<form:errors path="*" cssClass="errorblock" element="div"/>
+								
 							<table >
 								<%-- <tr>
 									<td><form:label path="id">Mã tài khoản</form:label></td>
@@ -55,37 +59,33 @@ response.setCharacterEncoding("UTF-8");
 								<input type="hidden" name="status" value="1" />
 								<tr>
 									<td style="text-align: right;"><form:label path="id">Mã tài khoản: </form:label></td>
-									<td style="text-align: left;"><form:input path="id" style="width: 80%; " placeholder="Nhập mã tài khoản"/></td>
+									<td style="text-align: left;"><form:input path="id" style="width: 40%; padding: 5px;" placeholder="Nhập mã tài khoản"/></td>
 								</tr>
 								<tr>
 									<td style="text-align: right;"><form:label path="pw">Mật khẩu: </form:label></td>
-									<td style="text-align: left;"><form:password path="pw" style="width: 80%" placeholder="Mật khẩu"/></td>
+									<td style="text-align: left;"><form:password path="pw" style="width: 40%; padding: 5px;" placeholder="Mật khẩu"/></td>
 								</tr>
 								<tr>
-									<td style="text-align: right;"><form:label path="name">Tên tài khoản: </form:label></td>
-									<td style="text-align: left;"><form:input path="name" style="width: 80%" placeholder="họ và tên"/></td>
-								</tr>
-								<tr>
-									<td style="text-align: right;"><form:label path="address">Địa chỉ: </form:label></td>
-									<td style="text-align: left;"><form:input path="address" style="width: 80%" placeholder="địa chỉ"/></td>
-								</tr>
-								<tr>
-									<td style="text-align: right;"><form:label path="note">Ghi chú: </form:label></td>
-									<td style="text-align: left;"><form:input path="note" style="width: 80%" placeholder="ghi chú"/></td>
+									<td style="text-align: right;"><form:label path="">Giữ tôi đăng nhập: </form:label></td>
+									<td style="text-align: left;"><form:checkbox path="" value="true"  /></td>
 								</tr>
 								
-								<tr>
-									<td style="text-align: right;"><form:label path="permission">Quyền tài khoản: </form:label></td>
-									<td style="text-align: left;">
-										<form:select path="permission" style="width: 50%; "  itemLabel="1">
-											<form:option value="1">Admin</form:option>
-											<form:option value="2">User</form:option>
-										</form:select>
-									</td>
-								</tr>
+								
 								<tr>
 									<td></td>
-									<td style=""><input type="submit"  value="Tạo mới" /></td>
+									<td style="text-align: left;"><input type="submit" style="padding: 5px;" value="Đăng nhập" /></td>
+								</tr>
+								
+								
+								<br/>
+								
+								<tr >
+									<td style="text-align: right;"></td>
+									<td style="text-align: left; "></td>
+								</tr>
+								<tr >
+									<td style="text-align: right;"></td>
+									<td style="text-align: left; "><a><span style="color: blue;">Lấy lại mật khẩu</span></a></td>
 								</tr>
 							</table>
 						</form:form>

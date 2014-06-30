@@ -1,5 +1,6 @@
 package com.hp.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,8 +33,19 @@ public class AccountController {
 	
 	@RequestMapping("/register")
 	public ModelAndView registerAccount(@ModelAttribute("account") Account account, BindingResult result){
+		Map<String, Object> model = new HashMap<String, Object>();
+		ArrayList<Integer> permission = new ArrayList<Integer>();
+		permission.add(1);
+		permission.add(2);
 		
-		return new ModelAndView("new-account");
+		ArrayList<String> label = new ArrayList<String>();
+		label.add("Admin");
+		label.add("User");
+		
+		model.put("permission", permission);
+		model.put("label", label);
+		
+		return new ModelAndView("new-account", "model", model);
 	}
 	
 	@RequestMapping("/new-account")
