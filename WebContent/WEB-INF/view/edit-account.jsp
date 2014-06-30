@@ -35,8 +35,9 @@
 					</div>
 					<div id="account">
 						<c:url var="accountRegistration" value="update-account.html" />
-						<form:form id="registerForm" modelAttribute="account" method="post"
-							action="${accountRegistration}">
+						<%-- <form:form id="registerForm" modelAttribute="account" method="post"
+							action="${accountRegistration}"> --%>
+						<form:form method="POST" commandName="editForm">
 							<table class="edittable" border = "0">
 								<%-- <tr>
 									<td><form:label path="id">Mã tài khoản</form:label></td>
@@ -49,38 +50,44 @@
 									<td><form:input  path="stt" value = "${model.account.stt }" style="width: 80%"/></td>
 									
 								</tr> --%>
-								<input type="hidden" name="stt" value="${model.account.stt }" /> 
-								<input type="hidden" name="id" value="${model.account.id }" /> 
-								<input type="hidden" name="status" value="${model.account.status }" /> 
+								<%-- <input type="hidden" name="stt" value="${account.stt }" /> 
+								<input type="hidden" name="id" value="${account.id }" /> 
+								<input type="hidden" name="status" value="${account.status }" />  --%>
+								
+								<form:hidden path="stt" />
+								<form:hidden path="id" />
+								<form:hidden path="status" />
 								<tr>
 									<td style="text-align: right;"><form:label path="id">Mã tài khoản:</form:label></td>
 									
-									<td style="text-align: left;"><form:input path="id" disabled="true" value = "${model.account.id }" style="width: 80%"/></td>
+									<td style="text-align: left;"><form:input path="id" disabled="true" value = "${account.id }" style="width: 80%"/></td>
 									
 								</tr>
 								
 								<tr>
 									<td style="text-align: right;"><form:label path="pw">Mật khẩu:</form:label></td>
-									<td style="text-align: left;"><form:password path="pw" value = "${model.account.pw }" style="width: 80%" placeholder="mật khẩu"/></td>
+									<td style="text-align: left;"><form:password path="pw" value = "${account.pw }" style="width: 80%" placeholder="mật khẩu"/></td>
 								</tr>
 								
 								<tr>
 									<td style="text-align: right;"><form:label path="name">Tên tài khoản:</form:label></td>
-									<td style="text-align: left;"><form:input path="name" value = "${model.account.getName() }" style="width: 80%" placeholder="họ và tên"/></td>
+									<td style="text-align: left;"><form:input path="name" value = "${account.getName() }" style="width: 80%" placeholder="họ và tên"/></td>
 								</tr>
 								<tr>
 									<td style="text-align: right;"><form:label path="address">Địa chỉ:</form:label></td>
-									<td style="text-align: left;"><form:input path="address" value = "${model.account.address }" style="width: 80%" placeholder="địa chỉ"/></td>
+									<td style="text-align: left;"><form:input path="address" value = "${account.address }" style="width: 80%" placeholder="địa chỉ"/></td>
 								</tr>
 								<tr>
 									<td style="text-align: right;"><form:label path="note">Ghi chú:</form:label></td>
-									<td style="text-align: left;"><form:input path="note" value = "${model.account.note }" style="width: 80%" placeholder="ghi chú"/></td>
+									<td style="text-align: left;"><form:input path="note" value = "${account.note }" style="width: 80%" placeholder="ghi chú"/></td>
 								</tr>
 								<tr>
 									<td style="text-align: right;"><form:label path="permission">Quyền tài khoản: </form:label></td>
 									<td style="text-align: left;">
 										<form:select path="permission" style="width: 50%; "  >
-										<c:choose>
+											<form:option value="NONE" label="--- Select ---"/>
+											<form:options items="${permissionList}" />
+										<%-- <c:choose>
 											<c:when test="${model.account.permission == 1 }">
 												<form:option value="1" selected="true">Admin</form:option>
 												<form:option value="2">User</form:option>
@@ -89,7 +96,7 @@
 												<form:option value="1" >Admin</form:option>
 												<form:option value="2" selected="true">User</form:option>
 											</c:when>
-										</c:choose>	
+										</c:choose>	 --%>
 										</form:select>
 									</td>
 								</tr>

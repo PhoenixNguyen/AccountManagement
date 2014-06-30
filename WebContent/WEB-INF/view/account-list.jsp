@@ -113,10 +113,10 @@
 									
 									</td>
 									<td class="tdlist">
-										<a href="edit-account.html?id=${account.stt }">
+										<a href="edit.html?id=${account.stt }">
 										<img src="${pageContext.request.contextPath}/resources/images/edit.jpg" alt="" title="Sửa" width="30px" height="30px"/>
 										</a>  
-										<a href='javascript:confirmDelete("delete-account.html?id=${account.stt }")'>
+										<a href='javascript:confirmDelete("delete.html?id=${account.stt }")'>
 										<img src="${pageContext.request.contextPath}/resources/images/delete.jpg" alt="" title="Xóa" width="30px" height="30px"/>
 										</a>
 									
@@ -137,7 +137,7 @@
 						<ul class="pagefrmt">
 						
 						
-							<li><a href="account-list.html?page=1" title="Về trang đầu"> <b>&lt&lt</b> &nbsp </a></li>
+							<li><a href="display.html?page=1" title="Về trang đầu"> <b>&lt&lt</b> &nbsp </a></li>
 							
 							<c:forEach items="${account }" var="account" varStatus="status" 
 										begin="0" step="10">
@@ -148,7 +148,7 @@
 									<li ><span style="color: red"> [${page}] </span></li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="account-list.html?page=${page}"> ${page} </a></li>
+									<li><a href="display.html?page=${page}"> ${page} </a></li>
 								</c:otherwise>
 							</c:choose>
 							
@@ -157,7 +157,7 @@
 							<li><a href="account-list.html?page=${page }"> e </a></li> --%>
 							
 							<fmt:parseNumber var="endpage2" value="${account.size() / 10 + 1}" type="number" integerOnly="true"/>
-							<li><a href="account-list.html?page=${endpage2}" title="Xuống trang cuối"> &nbsp <b>&gt&gt</b>  </a></li>
+							<li><a href="display.html?page=${endpage2}" title="Xuống trang cuối"> &nbsp <b>&gt&gt</b>  </a></li>
 						</ul>
 					</div>
 					<!-- <div class="r_01">

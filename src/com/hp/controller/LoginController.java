@@ -24,6 +24,6 @@ public class LoginController extends SimpleFormController{
 		Account account = (Account)command;
 		System.out.println(account);
 		//return new ModelAndView("CustomerSuccess","account",account);
-		return new ModelAndView("redirect:/account-list.html?page=1");
+		return new ModelAndView("redirect:/displayAccounts.html?page=1");
 	}
 }

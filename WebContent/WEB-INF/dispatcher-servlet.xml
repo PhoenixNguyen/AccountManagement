@@ -78,7 +78,8 @@
 	<!-- Declare the Resolver -->
 	<bean id="localeResolver"  
 	       class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
-	       
+	
+	<!-- To handle form submit -->       
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
     <bean class="com.hp.controller.LoginController" >
 		<property name="formView" value="login" />
@@ -89,4 +90,19 @@
 			<bean class="com.hp.validator.AccountValidator" />
 		</property> -->
 	</bean>
+	
+	<bean class="com.hp.controller.DisplayController" />
+
+	<bean class="com.hp.controller.EditController" >
+		<property name="formView" value="edit-account" />
+		<property name="successView" value="account-list" />
+		
+		<!-- Map a validator
+		<property name="validator">
+			<bean class="com.hp.validator.AccountValidator" />
+		</property> -->
+	</bean>
+	
+	<bean class="com.hp.controller.DeleteController" />
+	
 </beans>
