@@ -19,8 +19,16 @@ public class AccountValidator implements Validator{
 		ValidationUtils.rejectIfEmpty(errors, "pw", "required.pw", "Bạn chưa nhập mật khẩu!");
 		ValidationUtils.rejectIfEmpty(errors, "id", "required.id", "Bạn chưa nhập tài khoản!");
 		
+		
 		Account account = (Account)target;
 		
+		if(account.getId().length() > 50){
+			errors.rejectValue("id", "required.idlength");
+		}
+		
+		if(account.getPw().length() > 50){
+			errors.rejectValue("pw", "required.pwlength");
+		}
 	}
 	
 	
