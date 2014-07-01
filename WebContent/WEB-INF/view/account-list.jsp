@@ -93,7 +93,7 @@ session.setAttribute("ACCOUNT", null); */
 											begin="${(param.page - 1) * 10}" end="${(param.page -1) * 10 + 10-1}">
 								<tr>
 									<td class="tdlist"><c:out value="${status.index +  1}"/></td>
-									<td class="tdlist" style="text-align: left;"><a href="detail.html?id=${account.stt }"><c:out value="${account.id }"/></a></td>
+									<td class="tdlist" style="text-align: left;"><a href="detail.html?id=${account.id }"><c:out value="${account.userName }"/></a></td>
 									<td class="tdlist" style="text-align: left;"><c:out value="${account.name }"/></td>
 									<td class="tdlist" style="text-align: left;"><c:out value="${account.address }"/></td>
 									<td class="tdlist" style="text-align: left;"><c:out value="${account.note }"/></td>
@@ -126,10 +126,10 @@ session.setAttribute("ACCOUNT", null); */
 									
 									</td>
 									<td class="tdlist">
-										<a href="edit.html?id=${account.stt }">
+										<a href="edit.html?id=${account.id }">
 										<img src="${pageContext.request.contextPath}/resources/images/edit.jpg" alt="" title="Sửa" width="30px" height="30px"/>
 										</a>  
-										<a href='javascript:confirmDelete("delete.html?id=${account.stt }")'>
+										<a href='javascript:confirmDelete("delete.html?id=${account.id }")'>
 										<img src="${pageContext.request.contextPath}/resources/images/delete.jpg" alt="" title="Xóa" width="30px" height="30px"/>
 										</a>
 									

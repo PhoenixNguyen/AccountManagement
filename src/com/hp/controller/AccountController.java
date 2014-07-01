@@ -50,7 +50,7 @@ public class AccountController {
 	
 	@RequestMapping("/new-account")
 	public ModelAndView addAccount(@ModelAttribute("account") Account account, BindingResult result){
-		Account old = accountService.getAccount(account.getId());
+		Account old = accountService.getAccount(account.getUserName());
 		if(old != null){
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("account", old);

@@ -41,7 +41,7 @@ public class EditController extends SimpleFormController{
 		accountService.updateAccount(account);
 		
 		//return new ModelAndView("CustomerSuccess","account",account);
-		return new ModelAndView("redirect:/detail.html?id=" + account.getStt());
+		return new ModelAndView("redirect:/detail.html?id=" + account.getId());
 		
 	}
 	

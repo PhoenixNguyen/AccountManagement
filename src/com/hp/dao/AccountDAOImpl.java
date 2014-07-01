@@ -42,19 +42,19 @@ public class AccountDAOImpl implements AccountDAO{
 	}
 	
 	public void deleteAccount(int stt){
-		Query query = sessionFactory.getCurrentSession().createQuery("update Account set status = 3 where stt = " + stt);
+		Query query = sessionFactory.getCurrentSession().createQuery("update Account set status = 3 where id = " + stt);
 		query.executeUpdate();
 		sessionFactory.getCurrentSession().beginTransaction().commit();
 	}
 	
 	public Account getAccount(String username){
-		Query query = sessionFactory.getCurrentSession().createQuery("from Account where id = '" + username+"'");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Account where userName = '" + username+"'");
 		
 		return (Account)query.uniqueResult();
 	}
 	
 	public Account Authenticate(String id, String pw){
-		Query query = sessionFactory.getCurrentSession().createQuery("from Account where id = '" + id+"' and pw= '" +pw+ "'");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Account where userName = '" + id+"' and pw= '" +pw+ "'");
 		return (Account)query.uniqueResult();
 	}
 }

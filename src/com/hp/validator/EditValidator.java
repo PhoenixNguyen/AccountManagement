@@ -22,7 +22,7 @@ public class EditValidator implements Validator{
 		
 		Account account = (Account)target;
 		
-		if(account.getId().length() > 50){
+		if(account.getUserName().length() > 50){
 			errors.rejectValue("id", "required.idlength");
 		}
 		

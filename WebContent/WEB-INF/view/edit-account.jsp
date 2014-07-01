@@ -39,36 +39,10 @@
 							action="${accountRegistration}"> --%>
 						<form:form method="POST" commandName="editForm">
 							<table class="edittable" border = "0">
-								<%-- <tr>
-									<td><form:label path="id">Mã tài khoản</form:label></td>
-									<td><form:input path="id" /></td>
-								</tr> --%>
-								
-								<%-- <tr>
-									<td><form:label path="stt">STT</form:label></td>
-									
-									<td><form:input  path="stt" value = "${model.account.stt }" style="width: 80%"/></td>
-									
-								</tr> --%>
-								<%-- <input type="hidden" name="stt" value="${account.stt }" /> 
-								<input type="hidden" name="id" value="${account.id }" /> 
-								<input type="hidden" name="status" value="${account.status }" />  --%>
-								<%-- <input type="hidden" name="id" value="${account.id }" />  --%>
-								<%-- <form:hidden path="stt" />
-								<form:hidden path="id" />
-								<form:hidden path="status" /> --%>
-								<!-- <input type="hidden" name="id" value="HP" /> --> 
 								<tr>
-									<td style="text-align: right;"><form:label path="stt">STT:</form:label></td>
+									<td style="text-align: right;"><form:label path="userName">Mã tài khoản:</form:label></td>
 									
-									<td style="text-align: left;"><form:input path="stt" disabled="true" value = "${account.stt }" style="width: 80%; padding: 5px;"/></td>
-									
-								</tr>
-								
-								<tr>
-									<td style="text-align: right;"><form:label path="id">Mã tài khoản:</form:label></td>
-									
-									<td style="text-align: left;"><form:input path="id" disabled="true" value = "${account.id }" style="width: 80%; padding: 5px;"/></td>
+									<td style="text-align: left;"><form:input path="userName" disabled="true" value = "${account.userName }" style="width: 80%; padding: 5px;"/></td>
 									
 								</tr>
 								<tr>

@@ -14,13 +14,12 @@ public class Account {
 	@GeneratedValue
 	
 	@Column(name = "account_stt")
-	private int stt;
+	private int id;
 	
 	@Column(name = "account_username")
-	private String id;
+	private String userName;
 	@Column(name = "account_pw")
 	private String pw;
-	
 	@Column(name = "account_name")
 	private String name;
 	@Column(name = "account_address")
@@ -34,6 +33,12 @@ public class Account {
 	@Column(name = "account_email")
 	private String email;
 	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -52,21 +57,13 @@ public class Account {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public int getStt() {
-		return stt;
-	}
-	public void setStt(int stt) {
-		this.stt = stt;
-	}
-	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	
-
 	public String getPw() {
 		return pw;
 	}

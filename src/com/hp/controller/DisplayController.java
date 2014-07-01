@@ -30,7 +30,7 @@ public class DisplayController extends AbstractController{
 		Account acc = (Account)request.getSession().getAttribute("ACCOUNT");
 		
 		if(acc != null && acc.getPermission() == 2){
-			return new ModelAndView("redirect:/detail.html?id=" + acc.getStt());
+			return new ModelAndView("redirect:/detail.html?id=" + acc.getId());
 		}
 		
 		Map<String, Object> map = new HashMap<String, Object>();

@@ -1,4 +1,3 @@
-<%@page import="com.hp.domain.Account"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -6,21 +5,6 @@
 
 <%request.setCharacterEncoding("UTF-8"); 
 response.setCharacterEncoding("UTF-8");
-%>
-
-<%
-/*  session.setAttribute("LOGIN", null);
-session.setAttribute("ACCOUNT", null);    */
-
-	 if(session.getAttribute("LOGIN") != null && session.getAttribute("ACCOUNT") != null){
-		Account account = (Account)session.getAttribute("ACCOUNT");
-		 if(account.getPermission() == 1){
-			response.sendRedirect("displayAccounts.html?page=1");
-		}
-		else{
-			response.sendRedirect("detail.html?id=" + account.getStt());
-		} 
-	} 
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -53,20 +37,15 @@ session.setAttribute("ACCOUNT", null);    */
 				<!-- Body -->
 				<div id="w_body">
 					<div id="title">
-						<h1>Đăng nhập</h1>
+						<h1>Tạo mới tài khoản</h1>
 						
 						<c:if test="${!empty model.account}">
-							<span style="color: red;">Đăng nhập thất bại</span>
+							<span style="color: red;">Tài khoản đã tồn tại</span>
 						</c:if>
 					</div>
 					<div id="account">
 						<c:url var="accountRegistration" value="new-account.html" />
-						<%-- <form:form id="registerForm" modelAttribute="account" method="post"
-							action="${accountRegistration}"> --%>
-							<form:form method="POST" commandName="loginForm">
-
-								<%-- <form:errors path="*" cssClass="errorblock" element="div"/> --%>
-								
+						<form:form method="POST" commandName="editForm">
 							<table >
 								<%-- <tr>
 									<td><form:label path="id">Mã tài khoản</form:label></td>
@@ -74,39 +53,43 @@ session.setAttribute("ACCOUNT", null);    */
 								</tr> --%>
 								<input type="hidden" name="status" value="1" />
 								<tr>
-									<td style="text-align: right;"><form:label path="userName">Mã tài khoản: </form:label></td>
-									<td style="text-align: left;"><form:input path="userName" style="width: 40%; padding: 5px;" placeholder="Nhập mã tài khoản"/></td>
-									<td><form:errors path="userName" style="color: red;" cssClass="error" /></td>
+									<td style="text-align: right;"><form:label path="id">Mã tài khoản: </form:label></td>
+									<td style="text-align: left;"><form:input path="id" style="width: 80%; padding: 5px;" placeholder="Nhập mã tài khoản"/></td>
+									<td><form:errors path="id" style="color: red;" cssClass="error" /></td>
 								</tr>
 								<tr>
 									<td style="text-align: right;"><form:label path="pw">Mật khẩu: </form:label></td>
-									<td style="text-align: left;"><form:password path="pw" style="width: 40%; padding: 5px;" placeholder="Mật khẩu"/></td>
+									<td style="text-align: left;"><form:password path="pw" style="width: 80%; padding: 5px;" placeholder="Mật khẩu"/></td>
 									<td><form:errors path="pw" style="color: red;" cssClass="error" /></td>
 								</tr>
 								<tr>
-									<td style="text-align: right;"><form:label path="">Giữ tôi đăng nhập: </form:label></td>
-									<td style="text-align: left;"><form:checkbox path="" value="true"  /></td>
+									<td style="text-align: right;"><form:label path="name">Tên tài khoản: </form:label></td>
+									<td style="text-align: left;"><form:input path="name" style="width: 80%; padding: 5px;" placeholder="họ và tên"/></td>
+									<td><form:errors path="name" style="color: red;" cssClass="error" /></td>
 								</tr>
-								
+								<tr>
+									<td style="text-align: right;"><form:label path="address">Địa chỉ: </form:label></td>
+									<td style="text-align: left;"><form:input path="address" style="width: 80%; padding: 5px;" placeholder="địa chỉ"/></td>
+									<td><form:errors path="address" style="color: red;" cssClass="error" /></td>
+								</tr>
+								<tr>
+									<td style="text-align: right;"><form:label path="note">Ghi chú: </form:label></td>
+									<td style="text-align: left;"><form:input path="note" style="width: 80%; padding: 5px;" placeholder="ghi chú"/></td>
+									<td><form:errors path="note" style="color: red;" cssClass="error" /></td>
+								</tr>
 								
 								<tr>
-									<td></td>
-									<td style="text-align: left;"><input type="submit" style="padding: 5px;" value="Đăng nhập" /></td>
-								</tr>
-								
-								
-								<br/>
-								
-								<tr >
-									<td style="text-align: right;"></td>
-									<td style="text-align: left; "></td>
-								</tr>
-								<tr >
-									<td style="text-align: right;"></td>
-									<td style="text-align: left; ">
-										<a href="mail.html"><span style="color: blue;">Lấy lại mật khẩu &nbsp</span></a>
-										<a href="register.html"><span style="color: blue;">Đăng ký</span></a>
+									<td style="text-align: right;"><form:label path="permission">Quyền tài khoản: </form:label></td>
+									<td style="text-align: left;">
+										<form:select path="permission" style="width: 50%; padding: 5px;"  itemLabel="1">
+											<form:option value="1">Admin</form:option>
+											<form:option value="2">User</form:option>
+										</form:select>
 									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td style="text-align: left;"><input type="submit" style="padding: 5px;" value="Tạo mới" /></td>
 								</tr>
 							</table>
 						</form:form>

@@ -31,16 +31,16 @@ public class LoginController extends SimpleFormController{
 			throws Exception {
 
 		Account account = (Account)command;
-		System.out.println(account.getId() + " - " + account.getPw());
+		System.out.println(account.getUserName() + " - " + account.getPw());
 		
-		Account acc = accountService.Authenticate(account.getId(), account.getPw());
+		Account acc = accountService.Authenticate(account.getUserName(), account.getPw());
 		
 		if(acc != null){
 			request.getSession().setAttribute("LOGIN", true);
 			request.getSession().setAttribute("ACCOUNT", acc);
 			
 			//return new ModelAndView("CustomerSuccess","account",account);
-			return new ModelAndView("redirect:/detail.html?id=" + acc.getStt());
+			return new ModelAndView("redirect:/detail.html?id=" + acc.getId());
 		
 		}
 		else{

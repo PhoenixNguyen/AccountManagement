@@ -57,9 +57,9 @@ response.setCharacterEncoding("UTF-8");
 								</tr> --%>
 								<input type="hidden" name="status" value="1" />
 								<tr>
-									<td style="text-align: right;"><form:label path="id">Mã tài khoản</form:label></td>
-									<td><form:input path="id" style="width: 80%; " placeholder="Nhập mã tài khoản"/></td>
-									<td><form:errors path="id" cssClass="error" /></td>
+									<td style="text-align: right;"><form:label path="userName">Mã tài khoản</form:label></td>
+									<td><form:input path="userName" style="width: 80%; " placeholder="Nhập mã tài khoản"/></td>
+									<td><form:errors path="userName" cssClass="error" /></td>
 								</tr>
 								<tr>
 									<td style="text-align: right;"><form:label path="pw">Mật khẩu</form:label></td>

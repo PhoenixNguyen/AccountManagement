@@ -38,7 +38,7 @@
 				<div id="w_body">
 					<div id="title">
 					<h1>Thông tin tài khoản &nbsp
-					<a href='edit.html?id=${account.stt }'>
+					<a href='edit.html?id=${account.id }'>
 						<img src="${pageContext.request.contextPath}/resources/images/edit.jpg" alt="" title="Sửa" width="30px" height="30px"/>
 					</a>
 					</h1>
@@ -61,7 +61,7 @@
 									<td style="text-align: right;">Mã tài khoản:</td>
 									
 									<td style="text-align: left;">
-										<input type="text" readonly="readonly" style="width: 50%; padding: 5px;" value="${account.id }"/>
+										<input type="text" readonly="readonly" style="width: 50%; padding: 5px;" value="${account.userName }"/>
 										
 									</td>
 									

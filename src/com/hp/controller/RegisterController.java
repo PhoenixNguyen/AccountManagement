@@ -30,9 +30,9 @@ public class RegisterController extends SimpleFormController{
 			throws Exception {
 		
 		Account account = (Account)command;
-		System.out.println(account.getId() + " - " + account.getPw());
+		System.out.println(account.getUserName() + " - " + account.getPw());
 		
-		Account old = accountService.getAccount(account.getId());
+		Account old = accountService.getAccount(account.getUserName());
 		if(old != null){
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("account", old);
@@ -42,7 +42,7 @@ public class RegisterController extends SimpleFormController{
 		else{
 			accountService.addAccount(account);
 			System.out.println("Save new account");
-			return new ModelAndView("redirect:/detail.html?id=" +  accountService.getAccount(account.getId()).getStt());
+			return new ModelAndView("redirect:/detail.html?id=" +  accountService.getAccount(account.getUserName()).getId());
 		}
 	}
 }
