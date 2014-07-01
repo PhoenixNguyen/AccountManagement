@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
+import com.hp.domain.Account;
 import com.hp.service.AccountService;
 
 public class DisplayController extends AbstractController{
@@ -19,6 +20,18 @@ public class DisplayController extends AbstractController{
 	@Override
 	protected ModelAndView handleRequestInternal(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		
+		if(request.getSession().getAttribute("LOGIN") == null ){
+			
+			return new ModelAndView("redirect:/login.html");
+			
+		}
+		
+		Account acc = (Account)request.getSession().getAttribute("ACCOUNT");
+		
+		if(acc != null && acc.getPermission() == 2){
+			return new ModelAndView("redirect:/detail.html?id=" + acc.getStt());
+		}
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("account", accountService.getAccountList());

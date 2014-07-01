@@ -22,6 +22,12 @@ public class DetailController extends AbstractController{
 	protected ModelAndView handleRequestInternal(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
+		if(request.getSession().getAttribute("LOGIN") == null ){
+			
+			return new ModelAndView("redirect:/login.html");
+			
+		}
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		Account account = new Account();

@@ -29,6 +29,11 @@ public class EditController extends SimpleFormController{
 	protected ModelAndView onSubmit(HttpServletRequest request,
 			HttpServletResponse response, Object command, BindException errors)
 			throws Exception {
+		if(request.getSession().getAttribute("LOGIN") == null ){
+			
+			return new ModelAndView("redirect:/login.html");
+			
+		}
 
 		Account account = (Account)command;
 		System.out.println(account);
