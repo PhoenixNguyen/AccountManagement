@@ -1,28 +1,14 @@
-<%@page import="com.hp.domain.Account"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
-<%request.setCharacterEncoding("UTF-8"); 
-response.setCharacterEncoding("UTF-8");
-%>
-
 <%
-/*  session.setAttribute("LOGIN", null);
-session.setAttribute("ACCOUNT", null);    */
-
-	 if(session.getAttribute("LOGIN") != null && session.getAttribute("ACCOUNT") != null){
-		Account account = (Account)session.getAttribute("ACCOUNT");
-		 if(account.getPermission() == 1){
-			response.sendRedirect("displayAccounts.html?page=1");
-		}
-		else{
-			response.sendRedirect("detail.html?id=" + account.getStt());
-		} 
+	if(session.getAttribute("LOGIN") == null ){
+		
+			response.sendRedirect("login.html");
+	
 	} 
 %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -36,9 +22,7 @@ session.setAttribute("ACCOUNT", null);    */
 	<title>1Pay.vn - Kết nối nhanh, thanh toán linh hoạt | Ket noi
 		nhanh, thanh toan linh hoat</title>
 	<link rel="icon" href="<c:url value="/resources/favicon.ico" />" type="image/x-icon">
-	<script>
-		
-	</script>
+	
 </head>
 <body>
 	<!-- 1PAY WEB -->
@@ -53,63 +37,77 @@ session.setAttribute("ACCOUNT", null);    */
 				<!-- Body -->
 				<div id="w_body">
 					<div id="title">
-						<h1>Đăng nhập</h1>
-						
-						<c:if test="${!empty model.account}">
-							<span style="color: red;">Đăng nhập thất bại</span>
-						</c:if>
+					<h1>Thông tin tài khoản &nbsp
+					<a href='edit.html?id=${account.stt }'>
+						<img src="${pageContext.request.contextPath}/resources/images/edit.jpg" alt="" title="Sửa" width="30px" height="30px"/>
+					</a>
+					</h1>
 					</div>
 					<div id="account">
-						<c:url var="accountRegistration" value="new-account.html" />
+						<c:url var="accountRegistration" value="update-account.html" />
 						<%-- <form:form id="registerForm" modelAttribute="account" method="post"
 							action="${accountRegistration}"> --%>
-							<form:form method="POST" commandName="loginForm">
-
-								<%-- <form:errors path="*" cssClass="errorblock" element="div"/> --%>
+						<%-- <form:form method="POST" commandName="editForm"> --%>
+							<table class="edittable" border = "0">
 								
-							<table >
+								<%-- <input type="hidden" name="stt" value="${account.stt }" /> 
+								<input type="hidden" name="id" value="${account.id }" /> 
+								<input type="hidden" name="status" value="${account.status }" />  --%>
+								
+								<%-- <form:hidden path="stt" />
+								<form:hidden path="id" />
+								<form:hidden path="status" /> --%>
+								<tr>
+									<td style="text-align: right;">Mã tài khoản:</td>
+									
+									<td style="text-align: left;">
+										<input type="text" readonly="readonly" style="width: 50%; padding: 5px;" value="${account.id }"/>
+										
+									</td>
+									
+								</tr>
+								
 								<%-- <tr>
-									<td><form:label path="id">Mã tài khoản</form:label></td>
-									<td><form:input path="id" /></td>
+									<td style="text-align: right;"><form:label path="pw">Mật khẩu:</form:label></td>
+									<td style="text-align: left;"><form:password path="pw"  value = "${account.pw }" style="width: 80%" placeholder="mật khẩu"/></td>
 								</tr> --%>
-								<input type="hidden" name="status" value="1" />
-								<tr>
-									<td style="text-align: right;"><form:label path="id">Mã tài khoản: </form:label></td>
-									<td style="text-align: left;"><form:input path="id" style="width: 40%; padding: 5px;" placeholder="Nhập mã tài khoản"/></td>
-									<td><form:errors path="id" style="color: red;" cssClass="error" /></td>
-								</tr>
-								<tr>
-									<td style="text-align: right;"><form:label path="pw">Mật khẩu: </form:label></td>
-									<td style="text-align: left;"><form:password path="pw" style="width: 40%; padding: 5px;" placeholder="Mật khẩu"/></td>
-									<td><form:errors path="pw" style="color: red;" cssClass="error" /></td>
-								</tr>
-								<tr>
-									<td style="text-align: right;"><form:label path="">Giữ tôi đăng nhập: </form:label></td>
-									<td style="text-align: left;"><form:checkbox path="" value="true"  /></td>
-								</tr>
-								
 								
 								<tr>
-									<td></td>
-									<td style="text-align: left;"><input type="submit" style="padding: 5px;" value="Đăng nhập" /></td>
-								</tr>
-								
-								
-								<br/>
-								
-								<tr >
-									<td style="text-align: right;"></td>
-									<td style="text-align: left; "></td>
-								</tr>
-								<tr >
-									<td style="text-align: right;"></td>
-									<td style="text-align: left; ">
-										<a href="mail.html"><span style="color: blue;">Lấy lại mật khẩu &nbsp</span></a>
-										<a href="register.html"><span style="color: blue;">Đăng ký</span></a>
+									<td style="text-align: right;">Tên tài khoản:</td>
+									<td style="text-align: left;">
+										<input type="text" readonly="readonly" style="width: 50%; padding: 5px;" value="${account.name }"/>
 									</td>
 								</tr>
+								<tr>
+									<td style="text-align: right;">Địa chỉ:</td>
+									<td style="text-align: left;">
+										<input type="text" readonly="readonly" style="width: 50%; padding: 5px;" value="${account.address }"/>
+									</td>
+								</tr>
+								<tr>
+									<td style="text-align: right;">Ghi chú:</td>
+									<td style="text-align: left;">
+										<input type="text" readonly="readonly" style="width: 50%; padding: 5px;" value="${account.note }"/>
+									</td>
+								</tr>
+								<tr>
+									<td style="text-align: right;">Quyền tài khoản: </td>
+									<td style="text-align: left;">
+										<c:if test="${account.permission == 1}">
+											<input type="text" readonly="readonly" style="width: 50%; padding: 5px;" value="Admin"/>
+										</c:if>
+										<c:if test="${account.permission == 2}">
+											<input type="text" readonly="readonly" style="width: 50%; padding: 5px;" value="User"/>
+										</c:if>
+										
+									</td>
+								</tr>
+								<!-- <tr>
+									<td></td>
+									<td><input type="submit" value="Cập nhật" /></td>
+								</tr> -->
 							</table>
-						</form:form>
+						<%-- </form:form> --%>
 					
 					</div>
 					<!-- <div class="r_01">

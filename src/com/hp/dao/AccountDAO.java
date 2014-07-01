@@ -15,4 +15,6 @@ public interface AccountDAO {
 	
 	public void deleteAccount(Account account);
 	public void deleteAccount(int stt);
+	
+	public Account Authenticate(String id, String pw);
 }

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "account2")
+@Table(name = "account3")
 public class Account {
 	
 	@Id
@@ -17,7 +17,6 @@ public class Account {
 	private int stt;
 	
 	@Column(name = "account_username")
-	
 	private String id;
 	@Column(name = "account_pw")
 	private String pw;
@@ -32,7 +31,15 @@ public class Account {
 	private int status;
 	@Column(name = "account_permission")
 	private int permission;
+	@Column(name = "account_email")
+	private String email;
 	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public int getPermission() {
 		return permission;
 	}

@@ -243,9 +243,17 @@
 				<li>
 					<div class="down" id="top-login-wrapper"
 						style="padding-top: 10px;">
-						<a href="/protected/index.html"><img
+						<a href="login.html"><img
 							src="<c:url value="/resources/images/door-open-in.png" /> " border="0" align="absmiddle"
 							hspace="5" /> Đăng nhập</a>
+							
+					</div>
+					<div class="down" id="top-login-wrapper"
+						style="padding-top: 10px;">
+						
+							<a href="logout.html"><img width="15px" height="15px"
+							src="<c:url value="/resources/images/logout.png" /> " border="0" align="absmiddle"
+							hspace="5" /> Đăng xuất</a>
 					</div>
 				</li>
 				<script type="text/javascript">

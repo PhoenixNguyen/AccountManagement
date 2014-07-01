@@ -53,38 +53,49 @@
 								<%-- <input type="hidden" name="stt" value="${account.stt }" /> 
 								<input type="hidden" name="id" value="${account.id }" /> 
 								<input type="hidden" name="status" value="${account.status }" />  --%>
-								
-								<form:hidden path="stt" />
+								<%-- <input type="hidden" name="id" value="${account.id }" />  --%>
+								<%-- <form:hidden path="stt" />
 								<form:hidden path="id" />
-								<form:hidden path="status" />
+								<form:hidden path="status" /> --%>
+								<!-- <input type="hidden" name="id" value="HP" /> --> 
 								<tr>
-									<td style="text-align: right;"><form:label path="id">Mã tài khoản:</form:label></td>
+									<td style="text-align: right;"><form:label path="stt">STT:</form:label></td>
 									
-									<td style="text-align: left;"><form:input path="id" disabled="true" value = "${account.id }" style="width: 80%"/></td>
+									<td style="text-align: left;"><form:input path="stt" disabled="true" value = "${account.stt }" style="width: 80%; padding: 5px;"/></td>
 									
 								</tr>
 								
 								<tr>
+									<td style="text-align: right;"><form:label path="id">Mã tài khoản:</form:label></td>
+									
+									<td style="text-align: left;"><form:input path="id" disabled="true" value = "${account.id }" style="width: 80%; padding: 5px;"/></td>
+									
+								</tr>
+								<tr>
 									<td style="text-align: right;"><form:label path="pw">Mật khẩu:</form:label></td>
-									<td style="text-align: left;"><form:password path="pw" value = "${account.pw }" style="width: 80%" placeholder="mật khẩu"/></td>
+									<td style="text-align: left;"><form:password path="pw" value = "${account.pw }" style="width: 80%; padding: 5px;" placeholder="mật khẩu"/></td>
+									<td><form:errors path="pw" style="color: red;" cssClass="error" /></td>
 								</tr>
 								
 								<tr>
 									<td style="text-align: right;"><form:label path="name">Tên tài khoản:</form:label></td>
-									<td style="text-align: left;"><form:input path="name" value = "${account.getName() }" style="width: 80%" placeholder="họ và tên"/></td>
+									<td style="text-align: left;"><form:input path="name" value = "${account.getName() }" style="width: 80%; padding: 5px;" placeholder="họ và tên"/></td>
+									<td><form:errors path="name" style="color: red;" cssClass="error" /></td>
 								</tr>
 								<tr>
 									<td style="text-align: right;"><form:label path="address">Địa chỉ:</form:label></td>
-									<td style="text-align: left;"><form:input path="address" value = "${account.address }" style="width: 80%" placeholder="địa chỉ"/></td>
+									<td style="text-align: left;"><form:input path="address" value = "${account.address }" style="width: 80%; padding: 5px;" placeholder="địa chỉ"/></td>
+									<td><form:errors path="address" style="color: red;" cssClass="error" /></td>
 								</tr>
 								<tr>
 									<td style="text-align: right;"><form:label path="note">Ghi chú:</form:label></td>
-									<td style="text-align: left;"><form:input path="note" value = "${account.note }" style="width: 80%" placeholder="ghi chú"/></td>
+									<td style="text-align: left;"><form:input path="note" value = "${account.note }" style="width: 80%; padding: 5px;" placeholder="ghi chú"/></td>
+									<td><form:errors path="note" style="color: red;" cssClass="error" /></td>
 								</tr>
 								<tr>
 									<td style="text-align: right;"><form:label path="permission">Quyền tài khoản: </form:label></td>
 									<td style="text-align: left;">
-										<form:select path="permission" style="width: 50%; "  >
+										<form:select path="permission" style="width: 50%; padding: 5px;"  >
 											<form:option value="NONE" label="--- Select ---"/>
 											<form:options items="${permissionList}" />
 										<%-- <c:choose>
@@ -102,7 +113,7 @@
 								</tr>
 								<tr>
 									<td></td>
-									<td><input type="submit" value="Cập nhật" /></td>
+									<td style="text-align: left;"><input type="submit" value="Cập nhật" style=" padding: 5px;"/></td>
 								</tr>
 							</table>
 						</form:form>

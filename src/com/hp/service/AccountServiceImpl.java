@@ -2,6 +2,7 @@ package com.hp.service;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -42,5 +43,10 @@ public class AccountServiceImpl implements AccountService{
 	
 	public Account getAccount(String username){
 		return accountDAO.getAccount(username);
+	}
+	
+	public Account Authenticate(String id, String pw){
+		
+		return accountDAO.Authenticate(id, pw);
 	}
 }

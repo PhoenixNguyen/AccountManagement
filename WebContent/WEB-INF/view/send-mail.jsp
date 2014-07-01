@@ -9,18 +9,18 @@ response.setCharacterEncoding("UTF-8");
 %>
 
 <%
-/*  session.setAttribute("LOGIN", null);
-session.setAttribute("ACCOUNT", null);    */
+/* session.setAttribute("LOGIN", null);
+session.setAttribute("ACCOUNT", null); */
 
-	 if(session.getAttribute("LOGIN") != null && session.getAttribute("ACCOUNT") != null){
+	if(session.getAttribute("LOGIN") != null ){
 		Account account = (Account)session.getAttribute("ACCOUNT");
-		 if(account.getPermission() == 1){
+		if(account.getPermission() == 1){
 			response.sendRedirect("displayAccounts.html?page=1");
 		}
 		else{
 			response.sendRedirect("detail.html?id=" + account.getStt());
-		} 
-	} 
+		}
+	}
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -63,7 +63,7 @@ session.setAttribute("ACCOUNT", null);    */
 						<c:url var="accountRegistration" value="new-account.html" />
 						<%-- <form:form id="registerForm" modelAttribute="account" method="post"
 							action="${accountRegistration}"> --%>
-							<form:form method="POST" commandName="loginForm">
+							<form:form method="POST" commandName="mailForm">
 
 								<%-- <form:errors path="*" cssClass="errorblock" element="div"/> --%>
 								
@@ -74,40 +74,16 @@ session.setAttribute("ACCOUNT", null);    */
 								</tr> --%>
 								<input type="hidden" name="status" value="1" />
 								<tr>
-									<td style="text-align: right;"><form:label path="id">Mã tài khoản: </form:label></td>
-									<td style="text-align: left;"><form:input path="id" style="width: 40%; padding: 5px;" placeholder="Nhập mã tài khoản"/></td>
-									<td><form:errors path="id" style="color: red;" cssClass="error" /></td>
+									<td style="text-align: right;"><form:label path="email">Nhập Email: </form:label></td>
+									<td style="text-align: left;"><form:input path="email" style="width: 40%; padding: 5px;" placeholder="Nhập Email"/></td>
+									<td><form:errors path="email" style="color: red;" cssClass="error" /></td>
 								</tr>
-								<tr>
-									<td style="text-align: right;"><form:label path="pw">Mật khẩu: </form:label></td>
-									<td style="text-align: left;"><form:password path="pw" style="width: 40%; padding: 5px;" placeholder="Mật khẩu"/></td>
-									<td><form:errors path="pw" style="color: red;" cssClass="error" /></td>
-								</tr>
-								<tr>
-									<td style="text-align: right;"><form:label path="">Giữ tôi đăng nhập: </form:label></td>
-									<td style="text-align: left;"><form:checkbox path="" value="true"  /></td>
-								</tr>
-								
 								
 								<tr>
 									<td></td>
-									<td style="text-align: left;"><input type="submit" style="padding: 5px;" value="Đăng nhập" /></td>
+									<td style="text-align: left;"><input type="submit" style="padding: 5px;" value="Gửi" /></td>
 								</tr>
 								
-								
-								<br/>
-								
-								<tr >
-									<td style="text-align: right;"></td>
-									<td style="text-align: left; "></td>
-								</tr>
-								<tr >
-									<td style="text-align: right;"></td>
-									<td style="text-align: left; ">
-										<a href="mail.html"><span style="color: blue;">Lấy lại mật khẩu &nbsp</span></a>
-										<a href="register.html"><span style="color: blue;">Đăng ký</span></a>
-									</td>
-								</tr>
 							</table>
 						</form:form>
 					

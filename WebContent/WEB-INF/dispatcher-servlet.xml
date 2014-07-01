@@ -95,14 +95,36 @@
 
 	<bean class="com.hp.controller.EditController" >
 		<property name="formView" value="edit-account" />
-		<property name="successView" value="account-list" />
+		<!-- <property name="successView" value="account-list" /> -->
 		
-		<!-- Map a validator
+		<!-- Map a validator -->
 		<property name="validator">
-			<bean class="com.hp.validator.AccountValidator" />
-		</property> -->
+			<bean class="com.hp.validator.EditValidator" />
+		</property> 
+	</bean>
+	
+	<bean class="com.hp.controller.RegisterController" >
+		<property name="formView" value="new-account" />
+		<!-- <property name="successView" value="account-list" /> -->
+		
+		<!-- Map a validator -->
+		<property name="validator">
+			<bean class="com.hp.validator.EditValidator" />
+		</property> 
 	</bean>
 	
 	<bean class="com.hp.controller.DeleteController" />
+	<bean class="com.hp.controller.DetailController" />
+	<bean class="com.hp.controller.LogoutController" />
 	
+		
+	<bean class="com.hp.controller.MailController" >
+		<property name="formView" value="send-mail" />
+		<!-- <property name="successView" value="account-list" /> -->
+		
+		<!-- Map a validator -->
+		<!-- <property name="validator">
+			<bean class="com.hp.validator.EditValidator" />
+		</property> --> 
+	</bean>
 </beans>

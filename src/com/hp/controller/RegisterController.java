@@ -14,39 +14,35 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
 import com.hp.domain.Account;
 import com.hp.service.AccountService;
 
-
-public class LoginController extends SimpleFormController{
+public class RegisterController extends SimpleFormController{
 	
 	@Autowired
 	private AccountService accountService;
 	
-	public LoginController(){
+	public RegisterController(){
 		setCommandClass(Account.class);
-		setCommandName("loginForm");
+		setCommandName("registerForm");
 	}
 	
 	@Override
 	protected ModelAndView onSubmit(HttpServletRequest request,
 			HttpServletResponse response, Object command, BindException errors)
 			throws Exception {
-
+		
 		Account account = (Account)command;
 		System.out.println(account.getId() + " - " + account.getPw());
 		
-		Account acc = accountService.Authenticate(account.getId(), account.getPw());
-		
-		if(acc != null){
-			request.getSession().setAttribute("LOGIN", true);
-			request.getSession().setAttribute("ACCOUNT", acc);
+		Account old = accountService.getAccount(account.getId());
+		if(old != null){
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("account", old);
 			
-			//return new ModelAndView("CustomerSuccess","account",account);
-			return new ModelAndView("redirect:/detail.html?id=" + acc.getStt());
-		
+			return new ModelAndView("redirect:/register.html", "model", map);
 		}
 		else{
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("account", null);
-			return new ModelAndView("redirect:/login.html", "model", map);
+			accountService.addAccount(account);
+			System.out.println("Save new account");
+			return new ModelAndView("redirect:/detail.html?id=" +  accountService.getAccount(account.getId()).getStt());
 		}
 	}
 }

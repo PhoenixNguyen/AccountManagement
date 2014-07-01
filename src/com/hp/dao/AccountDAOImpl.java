@@ -52,4 +52,9 @@ public class AccountDAOImpl implements AccountDAO{
 		
 		return (Account)query.uniqueResult();
 	}
+	
+	public Account Authenticate(String id, String pw){
+		Query query = sessionFactory.getCurrentSession().createQuery("from Account where id = '" + id+"' and pw= '" +pw+ "'");
+		return (Account)query.uniqueResult();
+	}
 }

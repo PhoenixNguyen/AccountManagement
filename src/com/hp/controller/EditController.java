@@ -32,13 +32,12 @@ public class EditController extends SimpleFormController{
 
 		Account account = (Account)command;
 		System.out.println(account);
-		//return new ModelAndView("CustomerSuccess","account",account);
-		return new ModelAndView("redirect:/displayAccounts.html?page=1");
 		
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("account", accountService.getAccountList());
-//		
-//		return new ModelAndView("account-list", map);
+		accountService.updateAccount(account);
+		
+		//return new ModelAndView("CustomerSuccess","account",account);
+		return new ModelAndView("redirect:/detail.html?id=" + account.getStt());
+		
 	}
 	
 	@Override

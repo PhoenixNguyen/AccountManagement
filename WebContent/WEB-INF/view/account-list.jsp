@@ -1,3 +1,4 @@
+<%@page import="com.hp.domain.Account"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -6,6 +7,18 @@
  <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
     <%request.setCharacterEncoding("UTF-8"); %>
     
+    <%
+/* session.setAttribute("LOGIN", null);
+session.setAttribute("ACCOUNT", null); */
+
+	/* if(session.getAttribute("LOGIN") != null ){
+		Account account = (Account)session.getAttribute("ACCOUNT");
+		if(account.getPermission() == 2){
+			
+			response.sendRedirect("detail.html?id=" + account.getStt());
+		}
+	} */
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -80,7 +93,7 @@
 											begin="${(param.page - 1) * 10}" end="${(param.page -1) * 10 + 10-1}">
 								<tr>
 									<td class="tdlist"><c:out value="${status.index +  1}"/></td>
-									<td class="tdlist" style="text-align: left;"><c:out value="${account.id }"/></td>
+									<td class="tdlist" style="text-align: left;"><a href="detail.html?id=${account.stt }"><c:out value="${account.id }"/></a></td>
 									<td class="tdlist" style="text-align: left;"><c:out value="${account.name }"/></td>
 									<td class="tdlist" style="text-align: left;"><c:out value="${account.address }"/></td>
 									<td class="tdlist" style="text-align: left;"><c:out value="${account.note }"/></td>

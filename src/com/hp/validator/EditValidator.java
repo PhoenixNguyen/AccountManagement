@@ -6,7 +6,7 @@ import org.springframework.validation.Validator;
 
 import com.hp.domain.Account;
 
-public class AccountValidator implements Validator{
+public class EditValidator implements Validator{
 
 	@Override
 	public boolean supports(Class clazz) {
@@ -28,6 +28,15 @@ public class AccountValidator implements Validator{
 		
 		if(account.getPw().length() > 50){
 			errors.rejectValue("pw", "required.pwlength");
+		}
+		if(account.getName().length() > 100){
+			errors.rejectValue("name", "required.namelength");
+		}
+		if(account.getAddress().length() > 200){
+			errors.rejectValue("address", "required.addresslength");
+		}
+		if(account.getNote().length() > 200){
+			errors.rejectValue("note", "required.notelength");
 		}
 	}
 	
